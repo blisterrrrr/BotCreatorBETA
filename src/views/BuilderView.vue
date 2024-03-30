@@ -45,11 +45,16 @@ const save = () => {
   <h1>Bot Name: {{ LSName }}</h1>
   <button @click="save" style="margin-bottom: 20px">Save</button>
   <div class="builder-container">
-    <StartForm :msg="helloMsg" @send-data="handleFormData" :clear="clearing" />
-    <component :is="comp" v-for="comp of compList" @send-data="handleFormData" />
+    <StartForm :msg="helloMsg" @send-data="handleFormData" :clear="clearing" id="0" />
+    <component :is="comp"
+               v-for="(comp, index) of compList"
+               @send-data="handleFormData"
+               :id="index + 1"
+               :key="index"
+    />
     <button @click="isOpen = true">+</button>
     <Modal :open="isOpen" @close="isOpen = !isOpen">
-      <button v-for="ftype in formsAvailable" @click="compList.push(ftype)">
+      <button v-for="ftype in formsAvailable" @click="compList.push(ftype); isOpen = !isOpen">
         {{ ftype.__name }}
       </button>
     </Modal>

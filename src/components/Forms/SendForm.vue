@@ -2,7 +2,7 @@
   <div class="creator-form send">
     <label for="msg">Send Message</label>
     <input name="msg" v-model="description.parameters.message">
-    <button @click="emit('sendData', description)">Save</button>
+    <button @click="emit('sendData', description)">Save ({{id}})</button>
   </div>
 </template>
 
