@@ -1,0 +1,8 @@
+{
+  "type": "start",
+  "parameters": {
+    "message": "Hello",
+    "buttons": {}
+  },
+  "children": {}
+}
