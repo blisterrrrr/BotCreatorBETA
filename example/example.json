@@ -1,8 +1,27 @@
 {
   "type": "start",
   "parameters": {
-    "message": "Hello",
-    "buttons": {}
+    "message": "Welcomesad to MyBotqqq",
+    "buttons": []
   },
-  "children": {}
+  "children": [
+    {
+      "type": "answer",
+      "parameters": {
+        "message": "ddd",
+        "triggerMSg": "asdasd",
+        "buttons": []
+      },
+      "children": []
+    },
+    {
+      "type": "answer",
+      "parameters": {
+        "message": "sad",
+        "triggerMSg": "sadsad",
+        "buttons": []
+      },
+      "children": []
+    }
+  ]
 }

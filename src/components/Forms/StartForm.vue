@@ -1,25 +1,39 @@
 <template>
   <div class="creator-form">
     <label for="msg">Start Message</label>
-    <input :value="props.msg" name="msg">
+    <input name="msg" v-model="description.parameters.message">
   </div>
 </template>
 
 <script setup lang="ts">
-import { reactive } from 'vue'
+import { onMounted, onUpdated, reactive, ref, watch } from 'vue'
 
-const props = defineProps({
-  msg: String
-})
+const props = defineProps(['msg', 'clear'])
+
+const emit = defineEmits(['sendData'])
 
 const description = reactive({
   type: 'start',
   parameters: {
     message: props.msg,
-    buttons: {}
+    buttons: []
   },
-  children: {}
+  children: []
 })
+
+const hook = () => {
+  emit('sendData', description)
+}
+
+watch(() => props.clear, () => {
+  console.log('start')
+  emit('sendData', description)
+})
+
+onMounted(hook)
+
+onUpdated(hook)
+
 </script>
 
 <style scoped>

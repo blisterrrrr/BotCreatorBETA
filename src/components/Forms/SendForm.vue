@@ -1,8 +1,6 @@
 <template>
-  <div class="creator-form answer">
-    <label for="trigger">Trigger Message</label>
-    <input name="trigger" v-model="description.parameters.triggerMSg">
-    <label for="msg">Answer Message</label>
+  <div class="creator-form send">
+    <label for="msg">Send Message</label>
     <input name="msg" v-model="description.parameters.message">
     <button @click="emit('sendData', description)">Save</button>
   </div>
@@ -14,10 +12,9 @@ import { onMounted, onUpdated, reactive, ref } from 'vue'
 const emit = defineEmits(['sendData'])
 
 const description = reactive({
-  type: 'answer',
+  type: 'send',
   parameters: {
     message: '',
-    triggerMSg: '',
     buttons: []
   },
   children: []
