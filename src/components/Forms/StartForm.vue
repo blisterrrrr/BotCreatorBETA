@@ -11,8 +11,11 @@ import { onMounted, onUpdated, reactive, ref, watch } from 'vue'
 const props = defineProps(['msg', 'clear'])
 
 const emit = defineEmits(['sendData'])
+const { id } = defineProps(['id'])
+
 
 const description = reactive({
+  id: id,
   type: 'start',
   parameters: {
     message: props.msg,
