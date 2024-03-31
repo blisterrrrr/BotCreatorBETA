@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { useNameStore } from '@/stores/name'
 import { storeToRefs } from 'pinia'
-import { computed, onMounted, ref } from 'vue'
+import { computed, ref } from 'vue'
 import StartForm from '@/components/Forms/StartForm.vue'
 import MessageForm from '@/components/Forms/MessageForm.vue'
 import { useTitle } from '@vueuse/core'
 import { useBotStore } from '@/stores/botStore'
-import Modal from '@/components/Modal.vue'
+import Modal from '@/components/ModalWindow.vue'
 import { formsAvailable } from '@/utils/FormsAvailable.ts'
 
 // Name store
@@ -54,7 +54,10 @@ const save = () => {
     />
     <button @click="isOpen = true">+</button>
     <Modal :open="isOpen" @close="isOpen = !isOpen">
-      <button v-for="ftype in formsAvailable" @click="compList.push(ftype); isOpen = !isOpen">
+      <button v-for="(ftype, index) in formsAvailable"
+              @click="compList.push(ftype); isOpen = !isOpen"
+              :key="index"
+      >
         {{ ftype.__name }}
       </button>
     </Modal>

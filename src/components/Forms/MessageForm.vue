@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, onUpdated, reactive, ref } from 'vue'
+import { reactive } from 'vue'
 
 const emit = defineEmits(['sendData'])
 const { id } = defineProps(['id'])

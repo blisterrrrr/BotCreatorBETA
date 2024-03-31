@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, onUpdated, reactive, ref, watch } from 'vue'
+import { onMounted, onUpdated, reactive, watch } from 'vue'
 
 const props = defineProps(['msg', 'clear', 'id'])
 
