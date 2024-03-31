@@ -1,24 +1,26 @@
 {
+  "id": "0",
   "type": "start",
   "parameters": {
-    "message": "Welcomesad to MyBotqqq",
+    "message": "Welcomeassad to TestBot",
     "buttons": []
   },
   "children": [
     {
+      "id": 1,
       "type": "answer",
       "parameters": {
-        "message": "ddd",
-        "triggerMSg": "asdasd",
+        "message": "dd",
+        "triggerMSg": "ddd",
         "buttons": []
       },
       "children": []
     },
     {
-      "type": "answer",
+      "id": 2,
+      "type": "send",
       "parameters": {
-        "message": "sad",
-        "triggerMSg": "sadsad",
+        "message": "hi",
         "buttons": []
       },
       "children": []
