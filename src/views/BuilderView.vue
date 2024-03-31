@@ -29,7 +29,6 @@ const save = () => {
   saveStartForm(startForm.value?.getFormData())
   botCode.value.children = []
   logicForms.value.forEach((el) => {
-    console.log(el.getFormData())
     saveAfterStart(el.getFormData())
   })
   console.log(JSON.stringify(botCode.value))
