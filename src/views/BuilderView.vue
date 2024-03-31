@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import { useNameStore } from '@/stores/name'
 import { storeToRefs } from 'pinia'
-import { computed, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import StartForm from '@/components/Forms/StartForm.vue'
-import MessageForm from '@/components/Forms/MessageForm.vue'
 import { useTitle } from '@vueuse/core'
 import { useBotStore } from '@/stores/botStore'
 import Modal from '@/components/ModalWindow.vue'
-import { formsAvailable } from '@/utils/FormsAvailable.ts'
+import { formsAvailable } from '@/utils/FormsAvailable'
 
 // Name store
 const nameStore = useNameStore()
@@ -21,7 +20,9 @@ const { saveAfterStart, clear } = botStore
 
 const clearing = ref(false)
 const isOpen = ref(false)
-const compList = ref([MessageForm, MessageForm])
+const compList = ref([])
+const startForm = ref(null)
+const logicForms = ref([])
 
 useTitle(computed(() => `Creating ${LSName.value}`))
 
@@ -37,20 +38,26 @@ const handleFormData = (data) => {
 }
 
 const save = () => {
-  console.log(JSON.stringify(botCode.value))
-  clearCode()
+  console.log(startForm.value?.getFormData())
+  logicForms.value.forEach((el) => console.log(el.getFormData()))
+  // console.log(JSON.stringify(botCode.value))
+  // clearCode()
 }
 </script>
 <template>
   <h1>Bot Name: {{ LSName }}</h1>
   <button @click="save" style="margin-bottom: 20px">Save</button>
   <div class="builder-container">
-    <StartForm :msg="helloMsg" @send-data="handleFormData" :clear="clearing" id="0" />
+    <StartForm :msg="helloMsg"
+               :clear="clearing"
+               ref="startForm"
+               id="0"
+    />
     <component :is="comp"
                v-for="(comp, index) of compList"
-               @send-data="handleFormData"
                :id="index + 1"
                :key="index"
+               ref="logicForms"
     />
     <button @click="isOpen = true">+</button>
     <Modal :open="isOpen" @close="isOpen = !isOpen">

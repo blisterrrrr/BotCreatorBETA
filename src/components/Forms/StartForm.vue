@@ -6,11 +6,9 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, onUpdated, reactive, watch } from 'vue'
+import { reactive} from 'vue'
 
-const props = defineProps(['msg', 'clear', 'id'])
-
-const emit = defineEmits(['sendData'])
+const props = defineProps(['msg', 'id'])
 
 const description = reactive({
   id: props.id,
@@ -22,18 +20,14 @@ const description = reactive({
   children: []
 })
 
-const hook = () => {
-  emit('sendData', description)
+const getFormData = () => {
+  return description
 }
 
-watch(() => props.clear, () => {
-  console.log('start')
-  emit('sendData', description)
+defineExpose({
+  description,
+  getFormData
 })
-
-onMounted(hook)
-
-onUpdated(hook)
 
 </script>
 
