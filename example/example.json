@@ -2,7 +2,7 @@
   "id": "0",
   "type": "start",
   "parameters": {
-    "message": "Welcomeassad to TestBot",
+    "message": "sd",
     "buttons": []
   },
   "children": [
@@ -10,8 +10,8 @@
       "id": 1,
       "type": "answer",
       "parameters": {
-        "message": "dd",
-        "triggerMSg": "ddd",
+        "message": "Im fine!",
+        "triggerMSg": "How are you",
         "buttons": []
       },
       "children": []
@@ -20,7 +20,27 @@
       "id": 2,
       "type": "send",
       "parameters": {
-        "message": "hi",
+        "message": "Пasdasd",
+        "buttons": []
+      },
+      "children": []
+    },
+    {
+      "id": 3,
+      "type": "answer",
+      "parameters": {
+        "message": "фывф",
+        "triggerMSg": "sdaвыфв",
+        "buttons": []
+      },
+      "children": []
+    },
+    {
+      "id": 4,
+      "type": "answer",
+      "parameters": {
+        "message": "asdsa",
+        "triggerMSg": "sadsa",
         "buttons": []
       },
       "children": []

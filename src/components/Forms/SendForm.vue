@@ -7,10 +7,11 @@
 
 <script setup lang="ts">
 import { reactive } from 'vue'
+import type { FormDescription } from '@/utils/DescTypes'
 
 const { id } = defineProps(['id'])
 
-const description = reactive({
+const description: FormDescription = reactive({
   id: id,
   type: 'send',
   parameters: {

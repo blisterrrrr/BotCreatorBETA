@@ -7,6 +7,7 @@ import { useTitle } from '@vueuse/core'
 import { useBotStore } from '@/stores/botStore'
 import Modal from '@/components/ModalWindow.vue'
 import { formsAvailable } from '@/utils/FormsAvailable'
+import type { ComponentTypes, FormDescription } from '@/utils/DescTypes'
 
 // Name store
 const nameStore = useNameStore()
@@ -20,18 +21,32 @@ const { saveAfterStart, clear, saveStartForm } = botStore
 
 const isOpen = ref(false)
 const compList = ref([])
-const startForm = ref(null)
-const logicForms = ref([])
+const startForm = ref<InstanceType<typeof StartForm>>(null)
+const logicForms = ref<Array<InstanceType<ComponentTypes>>>([])
 
 useTitle(computed(() => `Creating ${LSName.value}`))
 
 const save = () => {
   saveStartForm(startForm.value?.getFormData())
-  botCode.value.children = []
-  logicForms.value.forEach((el) => {
-    saveAfterStart(el.getFormData())
-  })
+  if ('children' in botCode.value) {
+    botCode.value.children = []
+    logicForms.value.forEach((el) => {
+      saveAfterStart(el.getFormData())
+    })
+  }
   console.log(JSON.stringify(botCode.value))
+}
+
+// function parseFirst(store: typeof botStore, data: FormDescription) {
+//   const code = storeToRefs(store)
+//   const {clear} = store
+//   clear()
+//
+// }
+
+const load = (data: string) => {
+  const parsed: FormDescription = JSON.parse(data)
+
 }
 </script>
 <template>
