@@ -1,0 +1,69 @@
+{
+  "keyboards":[
+    {
+      "name": "keyboard1",
+      "type": "reply",
+      "rows": [
+        ["red", "blue"],
+        ["green"]
+      ]
+    }
+  ],
+
+  "blocks":[
+    {
+      "id": 0,
+      "type": "start",
+      "parameters": {
+        "message": "hello, I'm a bot",
+        "keyboard": "keyboard1"
+      },
+      "father": null,
+      "children": []
+    },
+    {
+      "id": 1,
+      "type": "command",
+      "parameters": {
+        "command": "help",
+        "message": "I'm ready to help",
+        "keyboard": null
+      },
+      "father": null,
+      "children": []
+    },
+    {
+      "id": 2,
+      "type": "answer",
+      "parameters": {
+        "message": "What theme do you want to set?",
+        "trigger": "pick theme",
+        "keyboard": "keyboard1"
+      },
+      "father": null,
+      "children": [3, 4]
+    },
+    {
+      "id": 3,
+      "type": "answer",
+      "parameters": {
+        "message": "Red theme was selected",
+        "trigger": "red",
+        "keyboard": null
+      },
+      "father": 2,
+      "children": []
+    },
+    {
+      "id": 4,
+      "type": "answer",
+      "parameters": {
+        "message": "Blue theme was selected",
+        "trigger": "Blue",
+        "keyboard": null
+      },
+      "father": 2,
+      "children": []
+    }
+  ]
+}
