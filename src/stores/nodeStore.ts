@@ -27,6 +27,15 @@ export const useNodeStore = defineStore('nodesstore', {
     }
   },
   actions: {
+    resetElements() {
+      this.elements.length = 0
+    },
+    resetEdges(edges: GraphEdge[]) {
+      edges.length = 0
+    },
+    resetNodes(nodes: GraphNode[]) {
+      nodes.length = 0
+    },
     listNodes(nodes: GraphNode[]) {
       return nodes
     },

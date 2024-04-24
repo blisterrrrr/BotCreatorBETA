@@ -12,43 +12,47 @@ import { storeToRefs } from 'pinia'
 import { useNodeStore } from '@/stores/nodeStore'
 import KeyboardButton from '@/components/builder/Nodes/KeyboardNodes/KeyboardButton.vue'
 import { nanoid } from 'nanoid'
+import useNodeSaver from '@/utils/nodesaver'
 
-const { onConnect, addEdges, addNodes, onInit, nodes } = useVueFlow()
+const { onConnect, addEdges, addNodes, onInit, edges } = useVueFlow()
 const { onDragOver, onDrop, onDragLeave, isDragOver } = useDragAndDrop()
-const myNodes = ref([])
+const {exporter, handleKeyboardNodes} = useNodeSaver()
 
 const { elements } = storeToRefs(useNodeStore())
-const { listNodes } = useNodeStore()
+const {
+  listNodes,
+  resetElements,
+  resetEdges,
+  resetNodes
+} = useNodeStore()
 
 const handleClick = () => {
-  listNodes(nodes).value.forEach(({ id, type, data }) => {
-    console.log(`Id is ${id} and type is ${type} and data is`)
-    console.log(data)
-  })
+  handleKeyboardNodes()
+  console.log(exporter)
 }
 
 onInit(() => {
   addNodes([{
-      id: nanoid(10),
-      type: 'keyboard-btn',
-      data: {
-        rowName: 'Hi!',
-        btnName: 'SayHi!'
-      },
-      position: { x: 0, y: 50 }
+    id: nanoid(10),
+    type: 'keyboard-btn',
+    data: {
+      rowName: 'Hi!',
+      btnName: 'SayHi!'
     },
+    position: { x: 0, y: 50 }
+  }
   ])
 })
 
 onConnect((param) => {
   addEdges(param)
 })
-const test = "node-keyboard-start"
+const test = 'node-keyboard-start'
 </script>
 
 <template>
   <button @click="handleClick">Save</button>
-  <Sidebar/>
+  <Sidebar />
   <div style="width: 900px; height: 90vh; border: gray 3px solid" @drop="onDrop">
     <VueFlow v-model="elements" @dragover="onDragOver"
              @dragleave="onDragLeave"
@@ -56,7 +60,7 @@ const test = "node-keyboard-start"
     >
       <Background pattern-color="#aaa" :gap="16" />
       <template #node-answer="{id, data}">
-        <AnswerNode :id :data/>
+        <AnswerNode :id :data />
       </template>
       <template #[test]="{ id, data }">
         <KeyboardStart :id :data />
