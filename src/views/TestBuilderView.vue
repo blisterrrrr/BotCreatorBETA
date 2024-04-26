@@ -13,10 +13,11 @@ import { useNodeStore } from '@/stores/nodeStore'
 import KeyboardButton from '@/components/builder/Nodes/KeyboardNodes/KeyboardButton.vue'
 import { nanoid } from 'nanoid'
 import useNodeSaver from '@/utils/nodesaver'
+import StartNode from '@/components/builder/Nodes/StartNode.vue'
 
 const { onConnect, addEdges, addNodes, onInit, edges } = useVueFlow()
 const { onDragOver, onDrop, onDragLeave, isDragOver } = useDragAndDrop()
-const {exporter, handleKeyboardNodes} = useNodeSaver()
+const { exporter, handleKeyboardNodes } = useNodeSaver()
 
 const { elements } = storeToRefs(useNodeStore())
 const {
@@ -30,19 +31,6 @@ const handleClick = () => {
   handleKeyboardNodes()
   console.log(exporter)
 }
-
-onInit(() => {
-  addNodes([{
-    id: nanoid(10),
-    type: 'keyboard-btn',
-    data: {
-      rowName: 'Hi!',
-      btnName: 'SayHi!'
-    },
-    position: { x: 0, y: 50 }
-  }
-  ])
-})
 
 onConnect((param) => {
   addEdges(param)
@@ -58,9 +46,18 @@ const test = 'node-keyboard-start'
              @dragleave="onDragLeave"
              :node-types="nodeTypes"
     >
-      <Background pattern-color="#aaa" :gap="16" />
+      <Background pattern-color="#aaa"
+                  :gap="16"
+                  :style="{
+          backgroundColor: isDragOver ? 'rgba(147,34,175,0.1)' : 'transparent',
+          transition: 'background-color 0.2s ease',
+        }"
+      />
       <template #node-answer="{id, data}">
         <AnswerNode :id :data />
+      </template>
+      <template #node-start>
+        <StartNode></StartNode>
       </template>
       <template #[test]="{ id, data }">
         <KeyboardStart :id :data />

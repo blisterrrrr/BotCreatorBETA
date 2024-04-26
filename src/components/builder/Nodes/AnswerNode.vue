@@ -2,6 +2,7 @@
 import { Handle, type NodeProps, Position, useVueFlow } from '@vue-flow/core'
 import { ref } from 'vue'
 import { useNodeDataUpdater } from '@/utils/nodes/useNodeDataUpdater'
+import { useNodeConnection } from '@/utils/nodes/nodesConnections'
 
 const { updateNodeData } = useVueFlow()
 const { handleEvent } = useNodeDataUpdater()
@@ -12,11 +13,13 @@ const { id, data } = defineProps<{
     [key: string]: string | number
   }
 }>()
+const { useBlockNodeConnection } = useNodeConnection()
 </script>
 
 <template>
   <div class="node-answer">
-    <Handle type="target" :position="Position.Left" />
+    <Handle type="target" :position="Position.Left"
+            :is-valid-connection="useBlockNodeConnection" />
     <label for="userMessage">Message to react</label>
     <input class="nodrag" :value="data.hello"
            @input="(e) => handleEvent(e.target as HTMLInputElement, id, data, 'hello')"

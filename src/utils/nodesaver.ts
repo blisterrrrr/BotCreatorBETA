@@ -8,6 +8,8 @@ type keyObj = {
   rows: string[]
 }
 
+const keyboard_type = 'reply'
+
 const useNodeSaver = () => {
 
   const exporter: {
@@ -35,7 +37,7 @@ const useNodeSaver = () => {
       if (val.type === 'keyboard-start') {
         const keyboardObject: keyObj = {
           name: val.data.name,
-          type: val.data.type,
+          type: keyboard_type,
           rows: []
         }
         handleKeyboardButtons(val.id, keyboardObject.rows)
@@ -50,6 +52,8 @@ const useNodeSaver = () => {
       keyboardRows.push(edge.targetNode.data.rowName as string)
     })
   }
+
+
 
   return {
     exporter,

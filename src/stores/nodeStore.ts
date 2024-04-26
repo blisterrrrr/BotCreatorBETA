@@ -6,24 +6,12 @@ import { ID_LENGTH } from '@/utils/CONSTANTS'
 export const useNodeStore = defineStore('nodesstore', {
   state() {
     return {
-      elements: [
-        {
+      elements: [{
           id: nanoid(ID_LENGTH),
-          type: 'answer',
-          data: {
-            hello: 'world'
-          },
-          position: { x: 0, y: 50 }
-        },
-        {
-          id: nanoid(ID_LENGTH),
-          type: 'keyboard-start',
-          data: {
-            name: 'hi!'
-          },
-          position: { x: 0, y: 100 }
-        }
-      ]
+          position: { x: 0, y: 0 },
+          label: 'Start Node',
+          type: 'start'
+      }]
     }
   },
   actions: {
