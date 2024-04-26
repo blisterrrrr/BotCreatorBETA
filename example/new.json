@@ -1,16 +1,20 @@
 {
-  "keyboards":[
+  "keyboards": [
     {
       "name": "keyboard1",
       "type": "reply",
       "rows": [
-        ["red", "blue"],
-        ["green"]
+        [
+          "red",
+          "blue"
+        ],
+        [
+          "green"
+        ]
       ]
     }
   ],
-
-  "blocks":[
+  "blocks": [
     {
       "id": 0,
       "type": "start",
@@ -41,7 +45,10 @@
         "keyboard": "keyboard1"
       },
       "father": null,
-      "children": [3, 4]
+      "children": [
+        3,
+        4
+      ]
     },
     {
       "id": 3,

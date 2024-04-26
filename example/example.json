@@ -1,48 +1,50 @@
 {
-  "id": "0",
-  "type": "start",
-  "parameters": {
-    "message": "sd",
-    "buttons": []
-  },
-  "children": [
+  "keyboards": [
     {
-      "id": 1,
+      "name": "ee",
+      "type": "reply",
+      "rows": [
+        "ddd"
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "id": "dcXzBvNbCv",
+      "type": "start",
+      "parameters": {},
+      "father": null,
+      "children": [
+        "95hpT2mY4Q",
+        "9igPyHAFef",
+        "qiHyC7F57d"
+      ]
+    },
+    {
+      "id": "95hpT2mY4Q",
       "type": "answer",
       "parameters": {
-        "message": "Im fine!",
-        "triggerMSg": "How are you",
-        "buttons": []
+        "hello": "asd"
       },
+      "father": "dcXzBvNbCv",
       "children": []
     },
     {
-      "id": 2,
-      "type": "send",
+      "id": "9igPyHAFef",
+      "type": "answer",
       "parameters": {
-        "message": "Пasdasd",
-        "buttons": []
+        "hello": "d"
       },
+      "father": "dcXzBvNbCv",
       "children": []
     },
     {
-      "id": 3,
+      "id": "qiHyC7F57d",
       "type": "answer",
       "parameters": {
-        "message": "фывф",
-        "triggerMSg": "sdaвыфв",
-        "buttons": []
+        "hello": "tbh"
       },
-      "children": []
-    },
-    {
-      "id": 4,
-      "type": "answer",
-      "parameters": {
-        "message": "asdsa",
-        "triggerMSg": "sadsa",
-        "buttons": []
-      },
+      "father": "dcXzBvNbCv",
       "children": []
     }
   ]

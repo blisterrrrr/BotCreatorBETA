@@ -1,7 +1,7 @@
 import type { Connection } from '@vue-flow/core'
 import { useVueFlow } from '@vue-flow/core'
 
-const keyboardTypes = ['keyboard-start', 'keyboard-btn']
+export const keyboardTypes = ['keyboard-start', 'keyboard-btn']
 
 export const useNodeConnection = () => {
   const { findNode } = useVueFlow()

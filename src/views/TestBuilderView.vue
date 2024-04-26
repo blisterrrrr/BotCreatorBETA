@@ -17,7 +17,7 @@ import StartNode from '@/components/builder/Nodes/StartNode.vue'
 
 const { onConnect, addEdges, addNodes, onInit, edges } = useVueFlow()
 const { onDragOver, onDrop, onDragLeave, isDragOver } = useDragAndDrop()
-const { exporter, handleKeyboardNodes } = useNodeSaver()
+const { exporter, handleKeyboardNodes, handleBlockNodes } = useNodeSaver()
 
 const { elements } = storeToRefs(useNodeStore())
 const {
@@ -29,7 +29,9 @@ const {
 
 const handleClick = () => {
   handleKeyboardNodes()
+  handleBlockNodes()
   console.log(exporter)
+  console.log(JSON.stringify(exporter))
 }
 
 onConnect((param) => {
